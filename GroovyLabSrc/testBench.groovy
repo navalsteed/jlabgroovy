@@ -1,4 +1,4 @@
-
+  
 class MyClass {
 	def comp(int N) {
 		double sm = 0.0
