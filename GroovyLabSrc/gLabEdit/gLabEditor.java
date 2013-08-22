@@ -542,10 +542,32 @@ final  JMenuItem GlobalGroovyCompletionJMenuItem = new JMenuItem("Toggle Global/
              });
           
  
-JMenu  completionMenu = new JMenu("Completion");
+final  JMenuItem IdentifierVsPackageCompletionJMenuItem = new JMenuItem("Toggle  Identifier vs Package  completion mode, Identifier completion is now : " + (GlobalValues.performPackageCompletion == false) );
+             IdentifierVsPackageCompletionJMenuItem.setToolTipText("Identifier completion concerns program variables, package completion allows to explore packages");
+                     
+             IdentifierVsPackageCompletionJMenuItem.setFont(GlobalValues.uifont);
+             IdentifierVsPackageCompletionJMenuItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              if (gExec.Interpreter.GlobalValues.performPackageCompletion  == true) {
+                  gExec.Interpreter.GlobalValues.performPackageCompletion  = false;
+                  IdentifierVsPackageCompletionJMenuItem.setText("Toggle  Identifier vs Package  completion mode, Identifier completion is now : " + (GlobalValues.performPackageCompletion == false)) ;
+                         }
+              else
+              {
+      gExec.Interpreter.GlobalValues.performPackageCompletion  = true;
+      IdentifierVsPackageCompletionJMenuItem.setText("Toggle  Identifier vs Package  completion mode, Identifier completion is now : " + (GlobalValues.performPackageCompletion == false)) ;
+              }               
+            }
+             });
+          
+
+ JMenu  completionMenu = new JMenu("Completion");
  completionMenu.setToolTipText("Retrieves information for code completion by the editor (i.e. CTRL-SPACE) from libraries using Java Reflection");
  completionMenu.setFont(GlobalValues.uifont);
  completionMenu.add(GlobalGroovyCompletionJMenuItem);
+ completionMenu.add(IdentifierVsPackageCompletionJMenuItem);
  completionMenu.add(ejmlCompletionJMenuItem);
  completionMenu.add(numericalRecipesCompletionJMenuItem);
  completionMenu.add(numalCompletionJMenuItem);
@@ -785,7 +807,7 @@ JMenu  completionMenu = new JMenu("Completion");
    codeBufferingMenu.add(editCodeBufferingMenuItem);
    codeBufferingMenu.add(clearCodeBufferingMenuItem);
    
-   switchLibrariesMenu.add(switchJBLASMenuItem);
+   // switchLibrariesMenu.add(switchJBLASMenuItem);
    
     importsMenu.setFont(GlobalValues.uifont);
     bufferImportsJMenuItem.setFont(GlobalValues.uifont);
@@ -853,7 +875,7 @@ JMenu  completionMenu = new JMenu("Completion");
     mainJMenuBar.add(applicationMenu);
     mainJMenuBar.add(importsMenu);
     mainJMenuBar.add(codeBufferingMenu);
-    mainJMenuBar.add(switchLibrariesMenu);
+    //mainJMenuBar.add(switchLibrariesMenu);
     mainJMenuBar.add(importantTipsMenu);
     mainJMenuBar.add(helpMenu);
     

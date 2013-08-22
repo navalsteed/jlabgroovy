@@ -21,8 +21,6 @@ public  class GCompletionProvider {
     GlobalValues.provider = createCompletionProvider();
     
     AutoCompletion ac = new AutoCompletion(GlobalValues.provider);
-    GlobalValues.globalEditorPane.setCodeFoldingEnabled(true);
-    GlobalValues.globalEditorPane.setAntiAliasingEnabled(true);
     ac.install(GlobalValues.globalEditorPane);
   }
     
@@ -31,14 +29,14 @@ public  class GCompletionProvider {
     GlobalValues.provider = createGroovyCompletionProvider();
     
     AutoCompletion ac = new AutoCompletion(GlobalValues.provider);
-    GlobalValues.globalEditorPane.setCodeFoldingEnabled(true);
-    GlobalValues.globalEditorPane.setAntiAliasingEnabled(true);
     ac.install(GlobalValues.globalEditorPane);
   }
   
+    // create a completer using the current variable over which the caret is placed
   static DefaultCompletionProvider createGroovyCompletionProvider() {
       DefaultCompletionProvider provider = new DefaultCompletionProvider();
 
+      // take the context of the Groovy Shell
       Binding currentBinding = gExec.Interpreter.GlobalValues.GroovyShell.getContext();
       Map allVars = currentBinding.getVariables();
       Set keysAllVars = allVars.keySet();
@@ -53,11 +51,11 @@ public  class GCompletionProvider {
             String currentCompletion = elems.next();
             provider.addCompletion(new BasicCompletion(provider,  currentCompletion));
         }
-        GlobalValues.provider = provider;
-   AutoCompletion ac = new AutoCompletion(GlobalValues.provider);
+    GlobalValues.provider = provider;
+    AutoCompletion ac = new AutoCompletion(GlobalValues.provider);
     ac.install(GlobalValues.globalEditorPane);
         
-        return provider;
+    return provider;
   }
   
   

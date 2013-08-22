@@ -40,7 +40,7 @@ static public String methodSubString="";
          char  ch = 0;
             try {
                 ch = doc.getText(offset, 1).charAt(0);
-                if (ch == '.') {
+                if (ch == '.') {  // the user specified a method name
                     GlobalValues.methodNameSpecified = true;
                     GlobalValues.selectionStart = offset+1;
                 }
@@ -102,7 +102,7 @@ static public String methodSubString="";
          if (wordAtCursor.indexOf(".") > -1) {   // the user has typed a method after the period
            if (GlobalValues.performPackageCompletion == false) {
              String [] classNameSplitted = wordAtCursor.split("\\."); 
-            className = classNameSplitted[0];   // the class name
+            className = classNameSplitted[0].trim();   // the class name
             if (classNameSplitted.length > 1)   // method has been specified
              groovySciCommands.Inspect.methodSubString = classNameSplitted[1];  // method name
            }
@@ -158,9 +158,7 @@ public static void collectInfoWithReflection(String nameOfType)
             System.out.println("Class not found for name: "+nameOfType);
             
         }
-         
      
-         
          // retrieve the methods of the class using Java reflection
     java.lang.reflect.Method []  classMethods = cl.getMethods();
 for (int k=0; k<classMethods.length; k++) {   // all class methods
@@ -201,8 +199,6 @@ for (int k=0; k<classMethods.length; k++) {   // all class methods
                  return ((String)v1).compareToIgnoreCase(((String)v2));
              }
         });
-        
-      
         
         // construct a view of the sorted Vector as an array of Strings
         int countMethods = scanMethods.size();
@@ -311,7 +307,8 @@ private static int lastIndexOfMatchedString(String prefix, int startingPoint)
     // returns an array of Strings that start with prefix
     public static String[] getMatched(String prefix)
     {
-          if (prefix.equals(""))  // all methods match to a null string
+    
+        if (prefix.equals(""))  // all methods match to a null string
         {
             return listOfAllMethods;
         }

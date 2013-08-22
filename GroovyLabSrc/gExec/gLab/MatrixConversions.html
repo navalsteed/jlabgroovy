@@ -5,7 +5,7 @@
 	<TITLE></TITLE>
 	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.2  (Win32)">
 	<META NAME="CREATED" CONTENT="20130426;6143156">
-	<META NAME="CHANGED" CONTENT="20130720;11502940">
+	<META NAME="CHANGED" CONTENT="20130721;4433701">
 	<STYLE TYPE="text/css">
 	<!--
 		@page { size: 21cm 29.7cm; margin: 2cm }
@@ -15,15 +15,23 @@
 	</STYLE>
 </HEAD>
 <BODY LANG="el-GR" DIR="LTR">
-<PRE>
-<FONT SIZE=4 STYLE="font-size: 16pt"><B>Basic Matrix Assignment Tip</B></FONT>
+<PRE><FONT SIZE=4 STYLE="font-size: 16pt"><B>Basic Matrix Assignment Tip</B></FONT>
 
-<FONT SIZE=4 STYLE="font-size: 16pt">Please use Java's notation for matrix assignment, e.g.</FONT>
+<FONT SIZE=4 STYLE="font-size: 16pt">The Java's notation for matrix assignment, e.g.</FONT>
 
 <FONT SIZE=4 STYLE="font-size: 16pt"><I>N=3</I></FONT>
 <FONT SIZE=4 STYLE="font-size: 16pt"><I>x = rand(N, N+6)</I></FONT>
 <FONT SIZE=4 STYLE="font-size: 16pt"><I>for (k in 0..N-1)</I></FONT>
-  <FONT SIZE=4 STYLE="font-size: 16pt"><I>x[k][k] = k    // <B>not x[k,k]=k</B></I></FONT>
+  <FONT SIZE=4 STYLE="font-size: 16pt"><I>x[k][k] = k    </I></FONT>
+
+<FONT SIZE=4 STYLE="font-size: 16pt"><I>is more efficient than e.g.</I></FONT>
+<FONT SIZE=4 STYLE="font-size: 16pt"><I>N=3</I></FONT>
+<FONT SIZE=4 STYLE="font-size: 16pt"><I>x = rand(N, N+6)</I></FONT>
+<FONT SIZE=4 STYLE="font-size: 16pt"><I>for (k in 0..N-1)</I></FONT>
+  <FONT SIZE=4 STYLE="font-size: 16pt"><I>x[k, k] = k    </I></FONT>
+
+
+<FONT SIZE=4 STYLE="font-size: 16pt"><I>// </I></FONT><FONT SIZE=4 STYLE="font-size: 16pt"><I><B>not x[k,k]=k</B></I></FONT>
 
 <FONT SIZE=4 STYLE="font-size: 16pt"><B>Converting GroovySci Matrix to other library formats</B></FONT>
 

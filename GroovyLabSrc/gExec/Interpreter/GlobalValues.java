@@ -30,7 +30,7 @@ import org.fife.ui.rtextarea.RTextScrollPane;
 
 public class GlobalValues
 {  
-    static public   String  dateOfBuild = "05-Aug - 13 ";       // tracks the date of build    
+    static public   String  dateOfBuild =  "07-Aug-13 ";       // tracks the date of build    
     static public   boolean   CompileIndy  = false;  // controls whether the Groovy compiler uses invokedynamic
     // an AST transformation that transforms BigDecimals to Doubles and results in much faster code
     static public   boolean   CompileDecimalsToDoubles = true;  
@@ -61,7 +61,7 @@ public class GlobalValues
    static public int selectionStart;
    static public int selectionEnd;
    static public boolean methodNameSpecified = false;   // method name specified at completion
-   static public boolean performPackageCompletion = true;
+   static public boolean performPackageCompletion = false;
    
    // at code completion (with F4) static members are denoted in bold font
    static public Font staticsFont = new Font("Arial", Font.BOLD, 11);
