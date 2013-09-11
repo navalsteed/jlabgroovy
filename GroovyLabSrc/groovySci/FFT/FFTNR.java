@@ -6,7 +6,7 @@ import groovySci.math.array.Vec;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-class  FFTNR {
+public class  FFTNR {
 
  public static  double  log2(double x)  {
     double  conv = java.lang.Math.log(2.0);
